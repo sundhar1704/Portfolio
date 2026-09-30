@@ -1,0 +1,92 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-teal-950: #062c2a;
+  --color-teal-900: #0a3d3a;
+  --color-brand-bg: #f0faf8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-brand-bg);
+}
+
+/* ===== Paste at the END of src/index.css ===== */
+
+/* Smooth scrolling + room for the fixed navbar */
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: 6rem; }
+
+/* ---- Dark mode: remaps the light colours already used across the site ---- */
+.dark { color-scheme: dark; }
+.dark body { background: #051f1c; color: #e6f4f1; }
+
+/* surfaces */
+.dark .bg-white { background-color: #0c2e2a; }
+.dark .bg-white\/80,
+.dark .bg-white\/70 { background-color: rgba(255, 255, 255, 0.06); }
+.dark .hover\:bg-white\/70:hover { background-color: rgba(255, 255, 255, 0.1); }
+.dark .bg-slate-50 { background-color: #0f3833; }
+.dark .hover\:bg-slate-50:hover { background-color: #134039; }
+.dark .bg-slate-100 { background-color: #123e38; }
+.dark .bg-slate-900 { background-color: #03120f; }
+.dark .bg-teal-50 { background-color: rgba(45, 212, 191, 0.12); }
+.dark .hover\:bg-teal-100:hover { background-color: rgba(45, 212, 191, 0.2); }
+.dark .bg-teal-900\/5 { background-color: rgba(45, 212, 191, 0.08); }
+
+/* text */
+.dark .text-slate-950,
+.dark .text-slate-900,
+.dark .text-slate-800 { color: #e6f4f1; }
+.dark .text-slate-700,
+.dark .text-slate-600 { color: #b7d3ce; }
+.dark .text-slate-500,
+.dark .text-slate-400 { color: #8fb0aa; }
+.dark .text-teal-900,
+.dark .text-teal-800,
+.dark .text-teal-700 { color: #5eead4; }
+
+/* borders + rings */
+.dark .border-slate-200,
+.dark .border-slate-100 { border-color: rgba(255, 255, 255, 0.1); }
+.dark .ring-slate-900\/5,
+.dark .ring-slate-900\/10,
+.dark .ring-teal-900\/5,
+.dark .ring-teal-900\/10,
+.dark .ring-teal-800\/10,
+.dark .ring-teal-800\/20 { --tw-ring-color: rgba(255, 255, 255, 0.1); }
+
+/* form fields (contact form) */
+.dark input,
+.dark textarea,
+.dark select { background-color: #0f3833; color: #e6f4f1; }
+.dark input::placeholder,
+.dark textarea::placeholder { color: #7a9f98; }
+.dark select option { background-color: #0f3833; color: #e6f4f1; }
+
+/* ===== Paste at the VERY END of src/index.css (after the dark-mode block) ===== */
+
+/* Dark page background: covers html, body, the React root and App's outer wrapper */
+.dark html,
+html.dark,
+.dark body,
+.dark #root,
+.dark #root > div {
+  background: linear-gradient(135deg, #042a25 0%, #051f1c 45%, #06302a 100%) !important;
+  background-attachment: fixed !important;
+  color: #e6f4f1;
+}
+
+/* Soft background glows in the hero: calmer in dark mode */
+.dark .bg-teal-200\/30 { background-color: rgba(45, 212, 191, 0.1); }
+.dark .bg-teal-300\/20 { background-color: rgba(45, 212, 191, 0.08); }
+
+/* Smooth colour change when switching themes */
+body,
+#root > div {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
